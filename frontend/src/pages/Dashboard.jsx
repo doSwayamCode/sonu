@@ -33,25 +33,25 @@ const Dashboard = () => {
   const overdue = tasks.filter(t => t.dueDate && new Date(t.dueDate) < new Date() && t.status !== 'Completed').length;
 
   const stats = [
-    { label: 'Total Tasks', value: total, icon: <FileText size={28} className="text-blue-600" />, bg: 'bg-blue-100', glow: 'shadow-blue-200' },
-    { label: 'Completed', value: completed, icon: <CheckCircle2 size={28} className="text-emerald-600" />, bg: 'bg-emerald-100', glow: 'shadow-emerald-200' },
-    { label: 'Pending', value: pending, icon: <Clock size={28} className="text-amber-600" />, bg: 'bg-amber-100', glow: 'shadow-amber-200' },
-    { label: 'Overdue', value: overdue, icon: <AlertCircle size={28} className="text-rose-600" />, bg: 'bg-rose-100', glow: 'shadow-rose-200' },
+    { label: 'Total Tasks', value: total, icon: <FileText size={28} className="text-blue-400" />, bg: 'bg-blue-900/30', glow: 'shadow-blue-900/20' },
+    { label: 'Completed', value: completed, icon: <CheckCircle2 size={28} className="text-emerald-400" />, bg: 'bg-emerald-900/30', glow: 'shadow-emerald-900/20' },
+    { label: 'Pending', value: pending, icon: <Clock size={28} className="text-amber-400" />, bg: 'bg-amber-900/30', glow: 'shadow-amber-900/20' },
+    { label: 'Overdue', value: overdue, icon: <AlertCircle size={28} className="text-rose-400" />, bg: 'bg-rose-900/30', glow: 'shadow-rose-900/20' },
   ];
 
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">Overview</h2>
-        <p className="text-gray-500 mt-1 text-sm">Track your team's progress and stay on top of your tasks.</p>
+        <h2 className="text-3xl font-extrabold text-white tracking-tight">Overview</h2>
+        <p className="text-gray-400 mt-1 text-sm">Track your team's progress and stay on top of your tasks.</p>
       </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, i) => (
           <div key={i} className={`glass-card p-6 flex items-center justify-between group hover:-translate-y-1 transition-all duration-300 shadow-lg ${stat.glow}`}>
             <div>
-              <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider">{stat.label}</p>
-              <p className="text-4xl font-extrabold text-gray-900 mt-2">{stat.value}</p>
+              <p className="text-sm font-semibold text-gray-400 uppercase tracking-wider">{stat.label}</p>
+              <p className="text-4xl font-extrabold text-white mt-2">{stat.value}</p>
             </div>
             <div className={`p-4 rounded-2xl ${stat.bg} group-hover:scale-110 transition-transform duration-300`}>
               {stat.icon}
@@ -61,24 +61,24 @@ const Dashboard = () => {
       </div>
 
       <div className="glass-card overflow-hidden">
-        <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-white/50">
-          <h3 className="text-xl font-bold text-gray-800">Recent Tasks</h3>
-          <Link to="/tasks" className="text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 group">
+        <div className="p-6 border-b border-gray-700/50 flex justify-between items-center bg-gray-800/30">
+          <h3 className="text-xl font-bold text-gray-100">Recent Tasks</h3>
+          {/* <Link to="/tasks" className="text-sm font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1 group">
             View All <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
+          </Link> */}
         </div>
         
         {tasks.length === 0 ? (
           <div className="p-12 text-center flex flex-col items-center">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-              <CheckCircle2 className="text-gray-400" size={32} />
+            <div className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mb-4">
+              <CheckCircle2 className="text-gray-600" size={32} />
             </div>
             <p className="text-gray-500 font-medium">No tasks assigned yet. You're all caught up!</p>
           </div>
         ) : (
-          <div className="divide-y divide-gray-100">
+          <div className="divide-y divide-gray-700/50">
             {tasks.slice(0, 5).map((task, i) => (
-              <div key={task._id} className="p-4 sm:p-6 flex flex-col sm:flex-row justify-between sm:items-center hover:bg-white/40 transition-colors gap-4" style={{ animationDelay: `${i * 100}ms` }}>
+              <div key={task._id} className="p-4 sm:p-6 flex flex-col sm:flex-row justify-between sm:items-center hover:bg-gray-800/40 transition-colors gap-4" style={{ animationDelay: `${i * 100}ms` }}>
                 <div className="flex items-start gap-4">
                   <div className={`mt-1 w-2 h-2 rounded-full flex-shrink-0 ${
                     task.status === 'Completed' ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]' :
@@ -86,9 +86,9 @@ const Dashboard = () => {
                     'bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]'
                   }`} />
                   <div>
-                    <p className="font-semibold text-gray-900">{task.title}</p>
-                    <div className="flex items-center gap-3 mt-1 text-xs text-gray-500">
-                      <span className="flex items-center gap-1 bg-gray-100 px-2 py-0.5 rounded-md">
+                    <p className="font-semibold text-white">{task.title}</p>
+                    <div className="flex items-center gap-3 mt-1 text-xs text-gray-400">
+                      <span className="flex items-center gap-1 bg-gray-800 px-2 py-0.5 rounded-md">
                         <Folder size={12} /> {task.projectId?.title || 'Unknown Project'}
                       </span>
                       {task.dueDate && (
@@ -101,9 +101,9 @@ const Dashboard = () => {
                 </div>
                 
                 <span className={`self-start sm:self-auto px-3 py-1 text-xs font-bold rounded-full border ${
-                  task.status === 'Completed' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
-                  task.status === 'In Progress' ? 'bg-blue-50 text-blue-700 border-blue-200' :
-                  'bg-amber-50 text-amber-700 border-amber-200'
+                  task.status === 'Completed' ? 'bg-emerald-900/30 text-emerald-400 border-emerald-800' :
+                  task.status === 'In Progress' ? 'bg-blue-900/30 text-blue-400 border-blue-800' :
+                  'bg-amber-900/30 text-amber-400 border-amber-800'
                 }`}>
                   {task.status}
                 </span>

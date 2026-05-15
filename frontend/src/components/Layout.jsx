@@ -21,7 +21,7 @@ const Layout = () => {
   ];
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[#f4f7fb]">
+    <div className="flex h-screen overflow-hidden bg-[#121215] text-gray-200">
       {/* Mobile sidebar backdrop */}
       {isMobileMenuOpen && (
         <div 
@@ -32,7 +32,7 @@ const Layout = () => {
 
       {/* Sidebar */}
       <aside className={`
-        fixed inset-y-0 left-0 z-30 w-72 glass transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:w-72 flex flex-col border-r border-white/50
+        fixed inset-y-0 left-0 z-30 w-72 bg-[#1a1a24] transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:w-72 flex flex-col border-r border-gray-800
         ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
         <div className="p-6 flex items-center justify-between">
@@ -55,11 +55,11 @@ const Layout = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`flex items-center space-x-3 px-4 py-3.5 rounded-xl transition-all duration-300 group
                   ${isActive 
-                    ? 'bg-gradient-to-r from-blue-50 to-indigo-50/50 text-blue-600 font-semibold shadow-sm border border-blue-100/50' 
-                    : 'text-gray-600 hover:bg-white/60 hover:text-gray-900'
+                    ? 'bg-gradient-to-r from-blue-900/40 to-indigo-900/40 text-blue-400 font-semibold shadow-sm border border-blue-800/50' 
+                    : 'text-gray-400 hover:bg-gray-800/60 hover:text-gray-200'
                   }`}
               >
-                <div className={`${isActive ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-500'} transition-colors`}>
+                <div className={`${isActive ? 'text-blue-400' : 'text-gray-500 group-hover:text-blue-400'} transition-colors`}>
                   {link.icon}
                 </div>
                 <span>{link.name}</span>
@@ -68,23 +68,8 @@ const Layout = () => {
           })}
         </nav>
 
-        <div className="p-4 m-4 glass-card">
-          <div className="flex items-center space-x-3 mb-4">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-500 text-white flex items-center justify-center font-bold shadow-md">
-              {user.name?.charAt(0).toUpperCase()}
-            </div>
-            <div className="overflow-hidden">
-              <p className="text-sm font-bold text-gray-800 truncate">{user.name}</p>
-              <p className="text-xs text-gray-500 truncate">{user.email}</p>
-            </div>
-          </div>
-          <button
-            onClick={handleLogout}
-            className="flex w-full items-center justify-center space-x-2 px-4 py-2.5 text-red-600 bg-red-50 hover:bg-red-100 rounded-lg transition-colors font-medium"
-          >
-            <LogOut size={18} />
-            <span>Sign Out</span>
-          </button>
+        <div className="p-4">
+          {/* Moved to header */}
         </div>
       </aside>
 
@@ -98,20 +83,28 @@ const Layout = () => {
           <div className="flex items-center space-x-4">
             <button 
               onClick={() => setIsMobileMenuOpen(true)}
-              className="lg:hidden p-2 rounded-md hover:bg-gray-100 text-gray-600"
+              className="lg:hidden p-2 rounded-md hover:bg-gray-800 text-gray-400"
             >
               <Menu size={24} />
             </button>
-            <h2 className="text-xl font-bold text-gray-800 hidden sm:block">
+            <h2 className="text-xl font-bold text-gray-100 hidden sm:block">
               {navLinks.find(link => link.path === location.pathname)?.name || 'Welcome'}
             </h2>
           </div>
           
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-6">
             <div className="text-right hidden sm:block">
-              <p className="text-sm font-semibold text-gray-800">Hello, {user.name?.split(' ')[0]}</p>
-              <p className="text-xs text-gray-500">Ready to manage tasks?</p>
+              <p className="text-sm font-semibold text-gray-200">Welcome, {user.name}</p>
+              <p className="text-xs text-gray-400">{user.email}</p>
             </div>
+            <div className="h-8 w-px bg-gray-700 hidden sm:block"></div>
+            <button
+              onClick={handleLogout}
+              className="flex items-center justify-center space-x-2 px-3 py-2 text-red-400 hover:text-red-300 hover:bg-red-900/30 rounded-lg transition-colors font-medium"
+            >
+              <LogOut size={18} />
+              <span className="hidden sm:inline">Sign Out</span>
+            </button>
           </div>
         </header>
         

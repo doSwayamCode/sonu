@@ -25,38 +25,38 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-[#121215]">
       {/* Dynamic Background Elements */}
-      <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-400/20 rounded-full blur-[100px] pointer-events-none animate-pulse" />
-      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-indigo-400/20 rounded-full blur-[100px] pointer-events-none animate-pulse" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none animate-pulse" />
+      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none animate-pulse" style={{ animationDelay: '2s' }} />
       
-      <div className="w-full max-w-md p-8 bg-white/90 border border-white shadow-xl backdrop-blur-2xl rounded-2xl animate-fade-in mx-4 z-10">
+      <div className="w-full max-w-md p-8 bg-[#1a1a24] border border-gray-800 shadow-xl rounded-2xl animate-fade-in mx-4 z-10">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-extrabold text-gray-900 mb-2 tracking-tight">TeamTasker</h1>
-          <p className="text-gray-500 text-sm">Sign in to your workspace</p>
+          <h1 className="text-3xl font-extrabold text-white mb-2 tracking-tight">TeamTasker</h1>
+          <p className="text-gray-400 text-sm">Sign in to your workspace</p>
         </div>
 
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-600 p-3 rounded-lg mb-6 text-sm text-center font-medium animate-fade-in">
+          <div className="bg-red-900/30 border border-red-800 text-red-400 p-3 rounded-lg mb-6 text-sm text-center font-medium animate-fade-in">
             {error}
           </div>
         )}
 
         <form onSubmit={handleLogin} className="space-y-5">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Email Address</label>
+            <label className="block text-sm font-semibold text-gray-300 mb-1.5">Email Address</label>
             <input 
               type="email" required
-              className="w-full p-3 bg-white border border-gray-200 rounded-xl text-gray-900 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all placeholder-gray-400"
+              className="w-full p-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all placeholder-gray-500"
               placeholder="name@company.com"
               value={email} onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Password</label>
+            <label className="block text-sm font-semibold text-gray-300 mb-1.5">Password</label>
             <input 
               type="password" required
-              className="w-full p-3 bg-white border border-gray-200 rounded-xl text-gray-900 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all placeholder-gray-400"
+              className="w-full p-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all placeholder-gray-500"
               placeholder="••••••••"
               value={password} onChange={(e) => setPassword(e.target.value)}
             />
@@ -70,9 +70,9 @@ const Login = () => {
           </button>
         </form>
 
-        <p className="mt-8 text-sm text-center text-black font-medium">
+        <p className="mt-8 text-sm text-center text-gray-400 font-medium">
           New to TeamTasker?{' '}
-          <Link to="/signup" className="text-blue-600 hover:text-blue-700 font-bold transition-colors">
+          <Link to="/signup" className="text-blue-400 hover:text-blue-300 font-bold transition-colors">
             Create an account
           </Link>
         </p>
